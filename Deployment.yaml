@@ -1,0 +1,20 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+   name: kubeproject
+spec:
+   replicas: 2
+   selector:      # tells the controller which pods to watch/belong to
+    matchLabels:
+     app: kubeproject
+   template:
+      metadata:
+        labels:
+          app: kubeproject
+      spec:
+       containers:
+        - name: kubeproject
+          image: ayusoni/kubernetes
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 80
